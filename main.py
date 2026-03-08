@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 import mysql.connector
 from pydantic import BaseModel
-
 class Establecimiento(BaseModel):
     nombre_establecimiento: str
     direccion_establecimiento: str
@@ -9,7 +8,7 @@ class Establecimiento(BaseModel):
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/establecimientos/")
 def main():
     try:
         conexion = mysql.connector.connect(
@@ -33,7 +32,7 @@ def main():
             conexion.close()
             print("Conexión cerrada.")
 
-@app.post("/establecimientos/")
+@app.post("/addEstablecimientos/")
 def create_establecimiento(establecimiento: Establecimiento):
     try:
         conexion = mysql.connector.connect(
@@ -44,7 +43,7 @@ def create_establecimiento(establecimiento: Establecimiento):
         )
         cursor = conexion.cursor()
         sql = "INSERT INTO establecimientos (nombre_establecimiento, direccion_establecimiento, telefono_establecimiento) VALUES (%s, %s, %s)"
-        val = (nombre_establecimiento, direccion_establecimiento, telefono_establecimiento)
+        val = (establecimiento.nombre_establecimiento, establecimiento.direccion_establecimiento, establecimiento.telefono_establecimiento)
         cursor.execute(sql, val)
         conexion.commit()
         return {"message": "Establecimiento creado correctamente"}
