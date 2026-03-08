@@ -1,7 +1,3 @@
-- Crear ruta para hacer una reserva TEST
-- Crear una ruta para obtener reservas TEST
-- Crear una ruta para crear usuarios TEST
-- Crear una ruta para crear establecimiento TEST
 - Securizar ruta para hacer una reserva
 - Securizar ruta para obtener reservas
 - Securizar ruta para hacer una resserva

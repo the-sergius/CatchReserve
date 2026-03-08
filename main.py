@@ -97,6 +97,31 @@ def main():
             conexion.close()
             print("Conexión cerrada.")
 
+
+@app.get("/users/")
+def main():
+    try:
+        conexion = mysql.connector.connect(
+            host="localhost",
+            user="root",
+            password="",
+            database="catchreserve"
+        )
+        cursor = conexion.cursor()
+        cursor.execute("SELECT * FROM usuarios")
+        users = cursor.fetchall()
+        data = {
+            "users": users
+        }
+        return data
+    except mysql.connector.Error as error:
+        return Response(status_code=500, content={"error": "Error conectando a MySQL"}, media_type="application/json")
+    finally:
+        if 'conexion' in locals() and conexion.is_connected():
+            cursor.close()
+            conexion.close()
+            print("Conexión cerrada.")
+
 @app.post("/makeReserve/")
 def make_reserve(reserve: Reserve):
     try:
@@ -111,7 +136,7 @@ def make_reserve(reserve: Reserve):
         val = (reserve.id_user, reserve.id_service, reserve.reserve_date, reserve.reserve_time)
         cursor.execute(sql, val)
         conexion.commit()
-        return {"message": "Servicio creado correctamente"}
+        return {"message": "Reserva realizada correctamente"}
     except mysql.connector.Error as error:
         return Response(status_code=500, content={"error": "Error al crear el servicio"}, media_type="application/json")
     finally:
@@ -176,13 +201,13 @@ def create_user(user: User):
             database="catchreserve"
         )
         cursor = conexion.cursor()
-        sql = "INSERT INTO establecimientos (nombre_usuario, apellido_usuario, email_usuario) VALUES (%s, %s, %s, %s)"
+        sql = "INSERT INTO usuarios (nombre_usuario, apellido_usuario, email_usuario, password_usuario) VALUES (%s, %s, %s, %s)"
         val = (user.username, user.surname, user.email, user.password)
         cursor.execute(sql, val)
         conexion.commit()
-        return {"message": "Establecimiento creado correctamente"}
+        return {"message": "Usuario creado correctamente"}
     except mysql.connector.Error as error:
-        return Response(status_code=500, content={"error": "Error al crear el establecimiento"}, media_type="application/json")
+        return Response(status_code=500, content={"error": "Error al crear el usuario"}, media_type="application/json")
     finally:
         if 'conexion' in locals() and conexion.is_connected():
             cursor.close()
