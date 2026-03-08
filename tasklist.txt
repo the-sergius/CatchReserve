@@ -1,0 +1,25 @@
+- Crear ruta para obtener establecimientos OK
+- Crear ruta para crear un servicio OK
+- Crear una ruta para obtener servicios OK
+- Crear ruta para hacer una reserva TEST
+- Crear una ruta para obtener reservas TEST
+- Crear una ruta para crear usuarios TEST
+- Crear una ruta para crear establecimiento TEST
+- Securizar ruta para hacer una reserva
+- Securizar ruta para obtener reservas
+- Securizar ruta para hacer una resserva
+- Securizar ruta para crear establecimientos
+- Crear ruta para modificar un servicio
+- Crear ruta para modficar una reserva
+- Crear una ruta para modificar usuarios
+- Crear ruta para eliminar un servicio
+- Crear ruta para eliminar una reserva
+- Crear una ruta para eliminar usuarios
+- Securizar ruta para modificar un servicio
+- Securizar ruta para modficar una reserva
+- Securizar una ruta para modificar usuarios
+- Securizar ruta para eliminar un servicio
+- Securizar ar ruta para eliminar una reserva
+- Securizar una ruta para eliminar usuarios
+- Refactorize to english
+- Try debugging options

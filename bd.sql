@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS servicios (
     id_servicio INT AUTO_INCREMENT PRIMARY KEY,
     id_establecimiento INT NOT NULL,
     nombre_servicio VARCHAR(50) NOT NULL,
-    descripción_servicio VARCHAR(200) NOT NULL,
+    descripcion_servicio VARCHAR(200) NOT NULL,
     FOREIGN KEY (id_establecimiento) REFERENCES establecimientos(id_establecimiento)
 );
 
