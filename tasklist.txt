@@ -1,6 +1,3 @@
-- Crear ruta para obtener establecimientos OK
-- Crear ruta para crear un servicio OK
-- Crear una ruta para obtener servicios OK
 - Crear ruta para hacer una reserva TEST
 - Crear una ruta para obtener reservas TEST
 - Crear una ruta para crear usuarios TEST
